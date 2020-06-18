@@ -24,6 +24,10 @@ SLASH_HELLOWORLD1, SLASH_HELLOWORLD2 = '/hiw', '/hellow'
 SlashCmdList["HELLOWORLD"] = MyAddonCommands   -- add /hiw and /hellow to command list
 
 
+
+
+
+
 squareText= {
 "Carll diesmore than 4 times",
 "All the hunters FD at the same time",
@@ -48,5 +52,43 @@ squareText= {
 "Xorrak is asked are the logs posted yet",
 "At least half the raid wipes on a trash pull",
 "Someone hits 100 DKP and does not want to spend it",
-"Thunderfury is mentioned at least once"
+"Thunderfury is mentioned at least once",
+"Someone gets 1 shot without pulling aggro"
+
 }
+
+local function randomizeCard()
+  --math.randomseed(1000)
+  local cardord = ""
+
+  local n = 25
+  local t = {}
+  for i = 1, n do
+    t[i] = i
+    -- print(squareText[i])
+  end
+
+  for i = 1, 20 do    
+    local j = math.random(i,n)
+    t[i], t[j] = t[j], t[i]
+  end
+
+  for i = 1, n do
+    print(squareText[t[i]])
+    cardord = cardord .. "," .. t[i]
+  end
+
+  print(cardord)
+end
+
+
+local function heythere()
+  print("heythere")
+  print(math.random(1,10))
+  print(squareText[math.random(1,10)])
+end
+
+SLASH_HEYTHERE1, SLASH_HEYTHERE2 = '/hey', '/heythere'
+
+--SlashCmdList["HEYTHERE"] = heythere   -- add /hiw and /hellow to command list
+SlashCmdList["HEYTHERE"] = randomizeCard   -- add /hiw and /hellow to command list
