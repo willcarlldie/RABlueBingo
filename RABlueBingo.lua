@@ -183,6 +183,6 @@ local function BingoBoard()
 	--print("This is where the bingo board lives")
 end
 
-SlashCmdList["RABLUEBINGO"] = function(msg)
+SlashCmdList["RABLUEBINGO"] = function(msg) --use /bingo or /RABlueBingo to call up the bingo board
 	BingoBoard();
 end
