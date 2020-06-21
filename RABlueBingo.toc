@@ -1,0 +1,8 @@
+## Interface: 11303
+## Title: RABlueBingo
+## Version: 1.0.0
+## Notes: Raid night bingo board inspired by the coolest holy priest, Raiment. Created by Carll and Xorrak
+## Authors: Carll, Xorrak
+## DefaultState: enabled
+
+RABlueBingo.lua
