@@ -1,5 +1,6 @@
 SLASH_RABLUEBINGO1 = "/RABlueBingo"
 SLASH_RABLUEBINGO2 = "/Bingo"
+SLASH_FREESPACE1 = "/Free"
 
 local function InitFrame(name, width, height)
 	name:SetFrameStrata("MEDIUM")
@@ -226,4 +227,7 @@ end
 
 SlashCmdList["RABLUEBINGO"] = function(msg) --use /bingo or /RABlueBingo to call up the bingo board
 	BingoBoard2();
+end
+SlashCmdList["FREESPACE"] = function(msg)
+	FreeSpot();
 end
