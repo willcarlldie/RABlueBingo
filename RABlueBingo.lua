@@ -186,6 +186,46 @@ local function BingoBoard()
 	--print("This is where the bingo board lives")
 end
 
+
+local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
+	--local newSquare = CreateFrame("Frame", "11", board)
+	newSquare = CreateFrame("Frame", name, parent)
+	InitFrame(newSquare, squareWidth, squareHeight)
+	newSquare.texture: SetColorTexture(1.0-0.8*math.fmod(name,2), 1.0, 1.0, 0.2)
+	newSquare:SetPoint("TOPLEFT", parent, "TOPLEFT", squareWidth*math.fmod(name,5), -squareHeight*math.floor(name/5))
+	print(math.fmod(name,5),math.floor(name/5))
+	newSquare.text:SetText(text)
+	
+	--if(GetUnitName("player") == "Elfo") then
+	--	newSquare.text:SetText(GetUnitName("player"))
+	--newSquare.text:SetText(GetUnitName("player"))
+	return newSquare
+end
+
+board = nil
+
+local function BingoBoard2()
+	local squareText = randomizeTextArray()
+	board=CreateFrame("Frame", "Bingo Board")
+	board:SetFrameStrata("BACKGROUND")
+	board:SetSize(550, 550)
+	board:SetPoint("CENTER", 0, 0)
+	board.texture = board:CreateTexture()
+	board.texture:SetAllPoints(board)
+	board.texture:SetColorTexture(.1, .1, .1)
+	local squareHeight = board:GetHeight()/5
+	local squareWidth = board:GetWidth()/5
+
+	bingoSquares = {}
+	for i = 0,25 do
+		bingoSquares[#bingoSquares+1] = makeBingoSquare(i, board, squareWidth, squareHeight, squareText[i+1])
+	end
+	board:Show()
+	tinsert(UISpecialFrames, board:GetName())
+
+	--print("This is where the bingo board lives")
+end
+
 SlashCmdList["RABLUEBINGO"] = function(msg) --use /bingo or /RABlueBingo to call up the bingo board
-	BingoBoard();
+	BingoBoard2();
 end

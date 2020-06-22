@@ -81,6 +81,32 @@ local function randomizeCard()
   print(cardord)
 end
 
+function randomizeTextArray()
+  rta = {}
+  --math.randomseed(1000)
+  local cardord = ""
+
+  local n = 25
+  local t = {}
+  for i = 1, n do
+    t[i] = i
+    -- print(squareText[i])
+  end
+
+  for i = 1, 20 do    
+    local j = math.random(i,n)
+    t[i], t[j] = t[j], t[i]
+  end
+
+  for i = 1, n do
+    print(squareText[t[i]])
+    cardord = cardord .. "," .. t[i]
+    rta[#rta+1]=squareText[t[i]]
+  end
+
+  print(cardord)
+  return rta
+end
 
 local function heythere()
   print("heythere")
