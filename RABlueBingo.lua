@@ -196,9 +196,7 @@ local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
 	print(math.fmod(name,5),math.floor(name/5))
 	newSquare.text:SetText(text)
 	
-	--if(GetUnitName("player") == "Elfo") then
-	--	newSquare.text:SetText(GetUnitName("player"))
-	--newSquare.text:SetText(GetUnitName("player"))
+
 	return newSquare
 end
 
