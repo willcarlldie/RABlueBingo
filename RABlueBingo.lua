@@ -223,7 +223,13 @@ local function checkWin()
 	print("ROWS: " .. r1 .. " . " .. r2 .. " . " .. r3 .. " . " .. r4 .. " . " .. r5 .. " . ")
 	print("COLS: " .. c1 .. " . " .. c2 .. " . " .. c3 .. " . " .. c4 .. " . " .. c5 .. " . ")
 	print("DIAG: " .. x1 .. " . " .. x2 )
+	
+	if r1 == 5 then 
+		print("WINNER")
+		board:Hide()
+	end
 end
+
 
 local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
 	--local newSquare = CreateFrame("Frame", "11", board)
@@ -261,6 +267,7 @@ end
 board = nil
 
 local function BingoBoard2()
+
 	local squareText = randomizeTextArray()
 	board=CreateFrame("Frame", "Bingo Board")
 	board:SetFrameStrata("BACKGROUND")
@@ -280,7 +287,9 @@ local function BingoBoard2()
 			bingoSquares[#bingoSquares].texture: SetColorTexture(1.0, 1.0, 0.0, 1.0)
 		end
 	end
+
 	board:Show()
+
 	tinsert(UISpecialFrames, board:GetName())
 
 	--print("This is where the bingo board lives")

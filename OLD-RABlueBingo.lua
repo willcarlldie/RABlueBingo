@@ -29,7 +29,7 @@ SlashCmdList["HELLOWORLD"] = MyAddonCommands   -- add /hiw and /hellow to comman
 
 
 squareText= {
-"Carll diesmore than 4 times",
+"Carll dies more than " .. math.random(3,6) .. " times",
 "All the hunters FD at the same time",
 "Big heals on Angry",
 "New record time for completion",
@@ -40,20 +40,54 @@ squareText= {
 "Repair bot",
 "Raiment is drinking something other than wine",
 "Ashkandi drops",
-"Amery removes salv, pulls agro and dies",
+"Amery pulls agro and dies",
 "Viewing or Shaolin say Oh Please",
 "Someone dies to gravity or lava boss",
 "Serox reminds us to loot the dogs",
-"Someone other than Tinned says they are TInned",
+"Someone other than Tinned says they are Tinned",
 "Portal Roulette after raid",
-"Somone is butthurt they rolled a 1",
+"Somone rolls a 1",
 "Tanks remove salv",
 "DMN trib buffs get dispelled before raid",
-"Xorrak is asked are the logs posted yet",
+"Xorrak is asked if are logs posted yet",
 "At least half the raid wipes on a trash pull",
 "Someone hits 100 DKP and does not want to spend it",
 "Thunderfury is mentioned at least once",
-"Someone gets 1 shot without pulling aggro"
+"Someone gets 1 shot without pulling aggro",
+"Sunders Sunders Sunders!",
+"Random farm animal noises in discord",
+"Fora reports someone",
+"Link your LOOT!",
+"A binding drops",
+"Wait, are we raiden?!",
+"Raiment is drunk",
+"Raiment is drinking wine",
+"Full wipe",
+"Not a SINGLE death!",
+"Healers need mana",
+"Braction speaks in Discord",
+"DPS reminded not to stand in fire",
+"Someone mentions Canada and/or being Canadian",
+"Laun is lagging into the future",
+"ZG mount drops",
+"Someone forgets their Drakefire Talisman",
+"Someone needs a summon out of lava",
+"Raiment needs a refill",
+"Someone is live streaming raid",
+"Shaolin blinks",
+"That needs to be on the bingo card!",
+"Someone threatens to rage quit",
+"A corpse is teabagged",
+"Someone bribes Fora to avoid getting reported",
+"Jumper cables are used, and they work",
+"Someone forgets to repair before raid",
+"Carll's death music is played in Discord",
+"Someone brings up that they flasked",
+"Hot mic in Discord",
+"Do we have wipe protection?",
+"Someone hearths during raid",
+"Someone blames transfers",
+
 
 }
 
@@ -61,11 +95,11 @@ local function randomizeCard()
   --math.randomseed(1000)
   local cardord = ""
 
-  local n = 25
+  local n = table.getn(squareText)
   local t = {}
   for i = 1, n do
     t[i] = i
-    -- print(squareText[i])
+    --print(squareText[i])
   end
 
   for i = 1, 20 do    
@@ -74,11 +108,11 @@ local function randomizeCard()
   end
 
   for i = 1, n do
-    print(squareText[t[i]])
+    --print(squareText[t[i]])
     cardord = cardord .. "," .. t[i]
   end
 
-  print(cardord)
+  --print(cardord)
 end
 
 function randomizeTextArray()
@@ -86,7 +120,7 @@ function randomizeTextArray()
   --math.randomseed(1000)
   local cardord = ""
 
-  local n = 25
+  local n = table.getn(squareText)
   local t = {}
   for i = 1, n do
     t[i] = i
@@ -99,12 +133,12 @@ function randomizeTextArray()
   end
 
   for i = 1, n do
-    print(squareText[t[i]])
+    --print(squareText[t[i]])
     cardord = cardord .. "," .. t[i]
     rta[#rta+1]=squareText[t[i]]
   end
 
-  print(cardord)
+  --print(cardord)
   return rta
 end
 
