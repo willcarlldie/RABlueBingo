@@ -187,6 +187,43 @@ local function BingoBoard()
 	--print("This is where the bingo board lives")
 end
 
+markedBoardSpaces = {}
+
+local function checkWin()
+
+    --[[
+	 0,  1,  2,  3,  4
+	 5,  6,  7,  8,  9
+	10, 11, 12, 13, 14
+	15, 16, 17, 18, 19
+	20, 21, 22, 23, 24
+	]]--
+
+	total = 0
+	for i = 1, #markedBoardSpaces do
+		--print(markedBoardSpaces[i])
+		total = total + markedBoardSpaces[i]
+		
+	end
+	print("TOTAL SPACES MARKED: " .. total)
+	r1 = markedBoardSpaces[0]+markedBoardSpaces[1]+markedBoardSpaces[2]+markedBoardSpaces[3]+markedBoardSpaces[4]
+	r2 = markedBoardSpaces[5]+markedBoardSpaces[6]+markedBoardSpaces[7]+markedBoardSpaces[8]+markedBoardSpaces[9]
+	r3 = markedBoardSpaces[10]+markedBoardSpaces[11]+markedBoardSpaces[12]+markedBoardSpaces[13]+markedBoardSpaces[14]
+	r4 = markedBoardSpaces[15]+markedBoardSpaces[16]+markedBoardSpaces[17]+markedBoardSpaces[18]+markedBoardSpaces[19]
+	r5 = markedBoardSpaces[20]+markedBoardSpaces[21]+markedBoardSpaces[22]+markedBoardSpaces[23]+markedBoardSpaces[24]
+
+	c1 = markedBoardSpaces[0]+markedBoardSpaces[5]+markedBoardSpaces[10]+markedBoardSpaces[15]+markedBoardSpaces[20]
+	c2 = markedBoardSpaces[1]+markedBoardSpaces[6]+markedBoardSpaces[11]+markedBoardSpaces[16]+markedBoardSpaces[21]
+	c3 = markedBoardSpaces[2]+markedBoardSpaces[7]+markedBoardSpaces[12]+markedBoardSpaces[17]+markedBoardSpaces[22]
+	c4 = markedBoardSpaces[3]+markedBoardSpaces[8]+markedBoardSpaces[13]+markedBoardSpaces[18]+markedBoardSpaces[23]
+	c5 = markedBoardSpaces[4]+markedBoardSpaces[9]+markedBoardSpaces[14]+markedBoardSpaces[19]+markedBoardSpaces[24]
+
+	x1 = markedBoardSpaces[0]+markedBoardSpaces[6]+markedBoardSpaces[12]+markedBoardSpaces[18]+markedBoardSpaces[24]
+	x2 = markedBoardSpaces[20]+markedBoardSpaces[16]+markedBoardSpaces[12]+markedBoardSpaces[8]+markedBoardSpaces[4]
+	print("ROWS: " .. r1 .. " . " .. r2 .. " . " .. r3 .. " . " .. r4 .. " . " .. r5 .. " . ")
+	print("COLS: " .. c1 .. " . " .. c2 .. " . " .. c3 .. " . " .. c4 .. " . " .. c5 .. " . ")
+	print("DIAG: " .. x1 .. " . " .. x2 )
+end
 
 local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
 	--local newSquare = CreateFrame("Frame", "11", board)
@@ -194,6 +231,26 @@ local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
 	InitFrame(newSquare, squareWidth, squareHeight)
 	newSquare.texture: SetColorTexture(1.0-0.8*math.fmod(name,2), 1.0, 1.0, 0.2)
 	newSquare:SetPoint("TOPLEFT", parent, "TOPLEFT", squareWidth*math.fmod(name,5), -squareHeight*math.floor(name/5))
+	markedBoardSpaces[name] = 0
+	newSquare:SetScript("OnMouseDown", function(self, button)
+		
+		if button == "LeftButton" then
+			print("ON")
+			print(name)
+			markedBoardSpaces[name] = 1
+			print(markedBoardSpaces[name])
+			checkWin()
+			self.texture: SetColorTexture(0.0, 0.0, 1.0, 0.2)
+		end
+		if button == "RightButton" then
+			self.texture: SetColorTexture(0.5, 0.5, 1.0, 0.2)
+			print("OFF")
+			print(name)
+			markedBoardSpaces[name] = 0
+			print(markedBoardSpaces[name])
+		end
+	end)
+
 	print(math.fmod(name,5),math.floor(name/5))
 	newSquare.text:SetText(text)
 	
@@ -216,8 +273,12 @@ local function BingoBoard2()
 	local squareWidth = board:GetWidth()/5
 
 	bingoSquares = {}
-	for i = 0,25 do
+	for i = 0,24 do
 		bingoSquares[#bingoSquares+1] = makeBingoSquare(i, board, squareWidth, squareHeight, squareText[i+1])
+		if i == 12 then
+			bingoSquares[#bingoSquares].text:SetText(FreeSpot())
+			bingoSquares[#bingoSquares].texture: SetColorTexture(1.0, 1.0, 0.0, 1.0)
+		end
 	end
 	board:Show()
 	tinsert(UISpecialFrames, board:GetName())
