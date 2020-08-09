@@ -205,7 +205,7 @@ local function checkWin()
 		total = total + markedBoardSpaces[i]
 		
 	end
-	print("TOTAL SPACES MARKED: " .. total)
+	--print("TOTAL SPACES MARKED: " .. total)
 	r1 = markedBoardSpaces[0]+markedBoardSpaces[1]+markedBoardSpaces[2]+markedBoardSpaces[3]+markedBoardSpaces[4]
 	r2 = markedBoardSpaces[5]+markedBoardSpaces[6]+markedBoardSpaces[7]+markedBoardSpaces[8]+markedBoardSpaces[9]
 	r3 = markedBoardSpaces[10]+markedBoardSpaces[11]+markedBoardSpaces[12]+markedBoardSpaces[13]+markedBoardSpaces[14]
@@ -220,13 +220,22 @@ local function checkWin()
 
 	x1 = markedBoardSpaces[0]+markedBoardSpaces[6]+markedBoardSpaces[12]+markedBoardSpaces[18]+markedBoardSpaces[24]
 	x2 = markedBoardSpaces[20]+markedBoardSpaces[16]+markedBoardSpaces[12]+markedBoardSpaces[8]+markedBoardSpaces[4]
-	print("ROWS: " .. r1 .. " . " .. r2 .. " . " .. r3 .. " . " .. r4 .. " . " .. r5 .. " . ")
-	print("COLS: " .. c1 .. " . " .. c2 .. " . " .. c3 .. " . " .. c4 .. " . " .. c5 .. " . ")
-	print("DIAG: " .. x1 .. " . " .. x2 )
+	--print("ROWS: " .. r1 .. " . " .. r2 .. " . " .. r3 .. " . " .. r4 .. " . " .. r5 .. " . ")
+	--print("COLS: " .. c1 .. " . " .. c2 .. " . " .. c3 .. " . " .. c4 .. " . " .. c5 .. " . ")
+	--print("DIAG: " .. x1 .. " . " .. x2 )
 	
-	if r1 == 5 then 
+	if (r1 == 5) or (r2 == 5) or (r3 == 5) or (r4 == 5) or (r5 == 5) or (c1 == 5) or (c2 == 5) or (c3 == 5) or (c4 == 5) or (c5 == 5) or (x1 == 5) or (x2 == 5) then 
 		print("WINNER")
-		board:Hide()
+		
+		--winnerSQUARE = makeBingoSquare(1, board, 500, 500, "WINNER")
+		--winnerSquare("winner",board,500,500,"WINNER")
+
+		--SendChatMessage("My, you're a tall one!", "WHISPER", nil, UnitName("target"))
+		SendChatMessage("BLUE BINGO", "SAY")
+		SendChatMessage("BLUE BINGO", "PARTY")
+		SendChatMessage("BLUE BINGO", "RAID")
+		
+		--board:Hide()
 	end
 end
 
@@ -241,28 +250,39 @@ local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
 	newSquare:SetScript("OnMouseDown", function(self, button)
 		
 		if button == "LeftButton" then
-			print("ON")
-			print(name)
+			--print("ON")
+			--print(name)
 			markedBoardSpaces[name] = 1
-			print(markedBoardSpaces[name])
-			checkWin()
+			--print(markedBoardSpaces[name])
 			self.texture: SetColorTexture(0.0, 0.0, 1.0, 0.2)
+			checkWin()
 		end
 		if button == "RightButton" then
 			self.texture: SetColorTexture(0.5, 0.5, 1.0, 0.2)
-			print("OFF")
-			print(name)
+			--print("OFF")
+			--print(name)
 			markedBoardSpaces[name] = 0
-			print(markedBoardSpaces[name])
+			--print(markedBoardSpaces[name])
 		end
 	end)
 
-	print(math.fmod(name,5),math.floor(name/5))
+	--print(math.fmod(name,5),math.floor(name/5))
 	newSquare.text:SetText(text)
 	
 
 	return newSquare
 end
+
+local function winnerSquare(name, parent, squareWidth, squareHeight, text)
+	--local newSquare = CreateFrame("Frame", "11", board)
+	newSquare = CreateFrame("Frame", name, parent)
+	--InitFrame(newSquare, squareWidth, squareHeight)
+	--newSquare.texture: SetColorTexture(0.0, 0.0, 1.0, 0.2)
+	--newSquare:SetPoint("TOPLEFT", parent, "TOPLEFT", 500, 500)
+	--newSquare.text:SetText(text)
+	return newSquare
+end
+
 
 board = nil
 
@@ -293,11 +313,20 @@ local function BingoBoard2()
 	tinsert(UISpecialFrames, board:GetName())
 
 	--print("This is where the bingo board lives")
+
+	board:SetScript("OnEscapePressed", function(self)
+		self:GetParent():Hide()
+	   end)
 end
 
 SlashCmdList["RABLUEBINGO"] = function(msg) --use /bingo or /RABlueBingo to call up the bingo board
-	BingoBoard2();
+	if board == nil then
+		BingoBoard2();
+	else
+		board:Show();
+	end
 end
+
 SlashCmdList["FREESPACE"] = function(msg)
 	FreeSpot();
 end
