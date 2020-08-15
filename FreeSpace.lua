@@ -27,5 +27,6 @@ freeSpace = {
 	Popout = "123",
 	Zendross = "Rejuv CRITS",
 	Brath = "stabby, stab stab!",
-	Serox = "Mix Master Serox"	
+	Serox = "Mix Master Serox",
+	Caoimhe = "Trutle that Tinned"
 }

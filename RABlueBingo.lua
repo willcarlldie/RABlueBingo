@@ -322,6 +322,7 @@ end
 SlashCmdList["RABLUEBINGO"] = function(msg) --use /bingo or /RABlueBingo to call up the bingo board
 	if board == nil then
 		BingoBoard2();
+		FreeSpot();
 	else
 		board:Show();
 	end
