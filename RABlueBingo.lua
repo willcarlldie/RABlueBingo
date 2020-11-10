@@ -1,5 +1,6 @@
 SLASH_RABLUEBINGO1 = "/RABlueBingo"
-SLASH_RABLUEBINGO2 = "/Bingo"
+SLASH_RABLUEBINGO2 = "/BlueBingo"
+SLASH_RABLUEBINGO2 = "/bluebingo"
 SLASH_FREESPACE1 = "/Free"
 
 local function InitFrame(name, width, height)
@@ -231,9 +232,10 @@ local function checkWin()
 		--winnerSquare("winner",board,500,500,"WINNER")
 
 		--SendChatMessage("My, you're a tall one!", "WHISPER", nil, UnitName("target"))
-		SendChatMessage("BLUE BINGO", "SAY")
-		SendChatMessage("BLUE BINGO", "PARTY")
-		SendChatMessage("BLUE BINGO", "RAID")
+		--SendChatMessage("BLUE BINGO", "SAY")
+		SendChatMessage("BINGO", "YELL")
+		--SendChatMessage("BLUE BINGO", "PARTY")
+		--SendChatMessage("BLUE BINGO", "RAID")
 		
 		--board:Hide()
 	end

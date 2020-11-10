@@ -26,7 +26,8 @@ SlashCmdList["HELLOWORLD"] = MyAddonCommands   -- add /hiw and /hellow to comman
 
 
 
-
+--"Someone forgets thier Ony neck",
+--"Amery is Demonotized"
 
 squareText= {
 "Carll dies more than " .. math.random(3,6) .. " times",
@@ -78,6 +79,7 @@ squareText= {
 "That needs to be on the bingo card!",
 "Someone threatens to rage quit",
 "A corpse is teabagged",
+"A corpse is clamslammed",
 "Someone bribes Fora to avoid getting reported",
 "Jumper cables are used, and they work",
 "Someone forgets to repair before raid",
@@ -87,7 +89,7 @@ squareText= {
 "Do we have wipe protection?",
 "Someone hearths during raid",
 "Someone blames transfers",
-
+"Amery say's he's demonitized",
 
 }
 

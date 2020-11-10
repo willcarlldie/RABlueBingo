@@ -4,6 +4,7 @@
 ## Note: Raid nite bingo board inspired by the coolest holy priest Raiment created by Carll and Xorrak
 ## Authors: Carll, Xorrak
 ## DefaultState: enable
+## SavedVariablesPerCharacter: SavedBingoBoard
 
 RABlueBingo.lua
 FreeSpace.lua
