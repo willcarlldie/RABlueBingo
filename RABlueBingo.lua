@@ -3,6 +3,9 @@ SLASH_RABLUEBINGO2 = "/BlueBingo"
 SLASH_RABLUEBINGO2 = "/bluebingo"
 SLASH_FREESPACE1 = "/Free"
 
+notyelled = 0
+notblueoutyelled = 0
+
 local function InitFrame(name, width, height)
 	name:SetFrameStrata("MEDIUM")
 	name:SetSize(width, height)
@@ -225,19 +228,30 @@ local function checkWin()
 	--print("COLS: " .. c1 .. " . " .. c2 .. " . " .. c3 .. " . " .. c4 .. " . " .. c5 .. " . ")
 	--print("DIAG: " .. x1 .. " . " .. x2 )
 	
-	if (r1 == 5) or (r2 == 5) or (r3 == 5) or (r4 == 5) or (r5 == 5) or (c1 == 5) or (c2 == 5) or (c3 == 5) or (c4 == 5) or (c5 == 5) or (x1 == 5) or (x2 == 5) then 
-		print("WINNER")
+	if (r1 == 5) and (r2 == 5) and (r3 == 5) and (r4 == 5) and (r5 == 5) and (c1 == 5) and (c2 == 5) and (c3 == 5) and (c4 == 5) and (c5 == 5) and (x1 == 5) and (x2 == 5) then 
+		
+		if (notblueoutyelled==0) then
+			notblueoutyelled = notblueoutyelled + 1
+			SendChatMessage("BLUE-OUT", "YELL")
+		end
+	elseif (r1 == 5) or (r2 == 5) or (r3 == 5) or (r4 == 5) or (r5 == 5) or (c1 == 5) or (c2 == 5) or (c3 == 5) or (c4 == 5) or (c5 == 5) or (x1 == 5) or (x2 == 5) then 
+		if (notyelled==0) then
+			print("WINNER")
 		
 		--winnerSQUARE = makeBingoSquare(1, board, 500, 500, "WINNER")
 		--winnerSquare("winner",board,500,500,"WINNER")
 
 		--SendChatMessage("My, you're a tall one!", "WHISPER", nil, UnitName("target"))
 		--SendChatMessage("BLUE BINGO", "SAY")
-		SendChatMessage("BINGO", "YELL")
+			SendChatMessage("BINGO", "YELL")
 		--SendChatMessage("BLUE BINGO", "PARTY")
 		--SendChatMessage("BLUE BINGO", "RAID")
 		
 		--board:Hide()
+		
+			--SendChatMessage("BLUEOUT", "YELL")
+			notyelled = notyelled + 1
+		end
 	end
 end
 
@@ -245,6 +259,7 @@ end
 local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
 	--local newSquare = CreateFrame("Frame", "11", board)
 	newSquare = CreateFrame("Frame", name, parent)
+	newSquare:SetFrameStrata("BACKGROUND")
 	InitFrame(newSquare, squareWidth, squareHeight)
 	newSquare.texture: SetColorTexture(1.0-0.8*math.fmod(name,2), 1.0, 1.0, 0.2)
 	newSquare:SetPoint("TOPLEFT", parent, "TOPLEFT", squareWidth*math.fmod(name,5), -squareHeight*math.floor(name/5))
