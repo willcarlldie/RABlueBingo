@@ -29,11 +29,11 @@ freeSpace = {
 	Brath = "Stabby stab stab!",
 	Serox = "Mix Master Serox",
 	Caoimhe = "Turtle that Tinned",
-	Natshariel = "Maul missed!"
-	Yoskeha = "Where's your boomchicken?"
-	Shpleeple = "She-people!"
+	Natshariel = "Maul missed!",
+	Yoskeha = "Where's your boomchicken?",
+	Shpleeple = "She-people!",
 	Jumbo = "This guy is HUGE!"
-	Mofugga = "mo-FEW-gah"
-	Nikmaa = "Fury warr with that phat DPS"
-	Groodle = "Don't you have enough mounts?!"
+	Mofugga = "mo-FEW-gah",
+	Nikmaa = "Fury warr with that phat DPS",
+	Groodle = "Don't you have enough mounts?!",
 }
