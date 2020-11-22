@@ -32,8 +32,8 @@ freeSpace = {
 	Natshariel = "Maul missed!",
 	Yoskeha = "Where's your boomchicken?",
 	Shpleeple = "She-people!",
-	Jumbo = "This guy is HUGE!"
+	Jumbo = "This guy is HUGE!",
 	Mofugga = "mo-FEW-gah",
 	Nikmaa = "Fury warr with that phat DPS",
-	Groodle = "Don't you have enough mounts?!",
+	Groodle = "Don't you have enough mounts?!"
 }

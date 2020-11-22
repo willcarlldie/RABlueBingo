@@ -89,7 +89,7 @@ squareText= {
 "Do we have wipe protection?",
 "Someone hearths during raid",
 "Someone blames transfers",
-"Amery say's he's demonitized",
+"Amery say's he's demonitized"
 
 }
 
