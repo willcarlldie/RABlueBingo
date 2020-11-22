@@ -18,15 +18,22 @@ end
 freeSpace = {
 	Xorrak = "Logs are already posted",
 	Raiment = "Raiment's Thicc Space",
-	Carll = "I might Be Dead",
+	Carll = "I might be dead",
 	Fora = "REPORTED!!!",
 	Amery = "Demonitized!",
 	Luan = "What day is it today?",
-	Angrypcp = "SUNDER!",
+	Angrypcp = "Sunder sunder sunder!",
 	Tinnedgoods = "something, something, THUNDERFURY!",
 	Popout = "123",
 	Zendross = "Rejuv CRITS",
-	Brath = "stabby, stab stab!",
+	Brath = "Stabby stab stab!",
 	Serox = "Mix Master Serox",
-	Caoimhe = "Trutle that Tinned"
+	Caoimhe = "Turtle that Tinned",
+	Natshariel = "Maul missed!"
+	Yoskeha = "Where's your boomchicken?"
+	Shpleeple = "She-people!"
+	Jumbo = "This guy is HUGE!"
+	Mofugga = "mo-FEW-gah"
+	Nikmaa = "Fury warr with that phat DPS"
+	Groodle = "Don't you have enough mounts?!"
 }
