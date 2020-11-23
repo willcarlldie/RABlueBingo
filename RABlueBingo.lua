@@ -259,7 +259,10 @@ end
 local function makeBingoSquare(name, parent, squareWidth, squareHeight, text)
 	--local newSquare = CreateFrame("Frame", "11", board)
 	newSquare = CreateFrame("Frame", name, parent)
-	newSquare:SetFrameStrata("BACKGROUND")
+	newSquare:Raise()
+	--newSquare:SetFrameLevel("OVERLAY")
+	--newSquare:SetFrameStrata("BACKGROUND")
+	--newSquare:SetFrameLevel(3)
 	InitFrame(newSquare, squareWidth, squareHeight)
 	newSquare.texture: SetColorTexture(1.0-0.8*math.fmod(name,2), 1.0, 1.0, 0.2)
 	newSquare:SetPoint("TOPLEFT", parent, "TOPLEFT", squareWidth*math.fmod(name,5), -squareHeight*math.floor(name/5))
@@ -307,7 +310,8 @@ local function BingoBoard2()
 
 	local squareText = randomizeTextArray()
 	board=CreateFrame("Frame", "Bingo Board")
-	board:SetFrameStrata("BACKGROUND")
+	--board:SetFrameStrata("DIALOG")
+	--board:SetFrameLevel("OVERLAY")
 	board:SetSize(550, 550)
 	board:SetPoint("CENTER", 0, 0)
 	board.texture = board:CreateTexture()
@@ -324,9 +328,13 @@ local function BingoBoard2()
 			bingoSquares[#bingoSquares].texture: SetColorTexture(1.0, 1.0, 0.0, 1.0)
 		end
 	end
-
+	--board:Raise()
+	--board:Raise()
+	--board:Raise()
+	--board:Raise()
+	board:SetFrameStrata("DIALOG")
 	board:Show()
-
+	--board:SetFrameStrata("OVERLAY")
 	tinsert(UISpecialFrames, board:GetName())
 
 	--print("This is where the bingo board lives")
